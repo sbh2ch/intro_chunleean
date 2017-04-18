@@ -6281,3 +6281,12 @@
 .icon-Zootool:before {
 	content: "\ee25";
 }
+.center-vertically-holder {
+    display: table;
+    height: 100%;
+}
+.center-vertically {
+    display: table-cell;
+    vertical-align: middle;
+    height: 100%;
+}

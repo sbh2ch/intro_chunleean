@@ -83,7 +83,6 @@
                                         '<div class="mfp-triggerBtn"><i class="icon-To-Top"></i></div>' +
                                         '<div class="mfp-projectTitleWrap">' +
                                             '<div class="display-table-cell vertical-align-middle">' +
-                                                '<span class="display-block font-family-alt letter-spacing-1 text-small text-uppercase">Project</span>' +
                                                 '<a class="mfp-projectLink display-inline-block font-weight-700 text-small text-uppercase" target="_blank">' +
                                                     '<div class="mfp-projectTitle"></div>' +
                                                 '</a>' +
@@ -101,7 +100,6 @@
 
                                             '<div class="viewport">' +
                                                 '<div class="overview">' +
-                                                    '<h3 class="display-inline-block font-family-alt text-extra-large text-uppercase title-underline">About</h3>' +
                                                     '<div class="mfp-projectAbout font-family-alt text-large"></div>' +
                                                 '</div>' +
                                             '</div>' +
@@ -109,7 +107,7 @@
                                     '</div>' +
 
                                     '<div class="mfp-triggerClose text-center">' +
-                                        '<span class="font-family-alt letter-spacing-2 text-uppercase text-extra-large text-white">Close Project</span>' +
+                                        '<span class="font-family-alt letter-spacing-2 text-uppercase text-extra-large text-white">닫기</span>' +
                                     '</div>' +
                                 '</div>' +
                             '</div>'
@@ -127,6 +125,11 @@
                         $('.mfp-triggerBtn').click(function(){
                             $('.mfp-projectDetail').toggleClass('is-open');
                             $(this).toggleClass('trigger-close');
+                        });
+                        
+                        $('.mfp-img').click(function(){
+                        	$('.mfp-projectDetail').toggleClass('is-open');
+                        	$(this).toggleClass('trigger-close');
                         });
 
                         // Project preview scrollbar
