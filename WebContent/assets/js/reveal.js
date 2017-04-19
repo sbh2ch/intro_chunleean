@@ -2,7 +2,7 @@
 if (typeof sr == 'undefined') {
 	window.sr = ScrollReveal({
 		duration : 1500,
-		delay : 50
+		delay : 400
 	});
 }
 
@@ -39,7 +39,6 @@ function triggerReveals() {
 		}
 	})
 	sr.reveal('.scaleReveal', {
-		origin : 'top',
 		scale : 0.6
 	});
 }
