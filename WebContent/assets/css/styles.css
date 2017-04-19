@@ -2309,6 +2309,10 @@ i-rounded {
   height: 3px;
 }
 
+.profile-description > .item > .GOCI-detail {
+	position: absolute;
+}
+
 
 /**
 * Profile - Gauge chart
