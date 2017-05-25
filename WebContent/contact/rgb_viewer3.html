@@ -1,0 +1,356 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<!--<![endif]-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+<title>천리안 해양관측위성</title>
+<meta name="description" content="Worthy a Bootstrap-based, Responsive HTML5 Template">
+<meta name="author" content="htmlcoder.me">
+
+<!-- Mobile Meta -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Favicon -->
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!-- Web Fonts -->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700,300&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Raleway:700,400,300' rel='stylesheet' type='text/css'>
+
+<!-- Bootstrap core CSS -->
+<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+
+<!-- Font Awesome CSS -->
+<link href="fonts/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+<!-- Plugins -->
+<link href="css/animations.css" rel="stylesheet">
+
+<!-- Worthy core CSS file -->
+<link href="css/style.css" rel="stylesheet">
+
+<!-- Custom css -->
+<link href="css/custom.css" rel="stylesheet">
+<script type="text/javascript" src="plugins/jquery.min.js"></script>
+
+<!-- Read Text File -->
+<!-------------------->
+<script type="text/javascript">
+	var array = new Array();
+	array[0] = new Array();
+	array[1] = new Array();
+	array[2] = new Array();
+	array[3] = new Array();
+	</script>
+<?
+	$File = file('./img_h/week_SST.txt');
+	for($i = 0; $i < sizeof($File); $i++)
+	{
+		$Menu_item = explode(" ", $File[$i]);
+	?>
+<script type="text/javascript">
+		array[0][<? echo $i ?>] =  [ <? echo $Menu_item[0] ?> ];//Year						
+		array[1][<? echo $i ?>] =  [ <? echo $Menu_item[1] ?> ];//Month
+		array[2][<? echo $i ?>] =  [ <? echo $Menu_item[2] ?> ];//Day
+		array[3][<? echo $i ?>] =  [ <? echo $Menu_item[3] ?> ];//Hour
+		</script>
+<?
+	}
+	?>
+<style>
+.view1 {
+	opacity: 0;
+	transition: 1s;
+}
+
+.view2 {
+	opacity: 1;
+	transition: 0.2s;
+}
+
+.view3 {
+	opacity: 1;
+}
+
+#bground {
+	min-height: 100%;
+	min-width: 1024px;
+	width: 100%;
+	height: auto;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 200;
+}
+</style>
+</head>
+
+
+<!-- Background Image -->
+<body class="no-trans" background="./background_image.png" style="background-repeat: no-repeat; background-size: 1920px 1080px; overflow-x: hidden; overflow-y: hidden">
+	<img id="bground" class="view1" src="background1.png">
+
+	<!-- Head Title -->
+	<h1>
+		<font color="white" style="position: absolute; left: 50px; top: 60px;"> 천리안 해양관측위성 </font>
+	</h1>
+	<h2>
+		<font color="white" style="position: absolute; left: 730px; top: 100px;">(Geostationary Ocean Color Imager)</font>
+	</h2>
+
+	<!-- 날짜 정보 표출  -->
+	<h2>
+		<font id="showDate" color="white" style="position: absolute; left: 1510px; top: 92px;"> <script type="text/javascript">
+		document.write(array[0][0])																			<!-- 파일별 변경 필요 -->
+		document.write("년 ");
+		
+		if (array[1][0] < 10) 
+			document.write("0"+array[1][0]);																<!-- 파일별 변경 필요 -->
+		else 
+			document.write(array[1][0]);																	<!-- 파일별 변경 필요 -->
+	
+		document.write("월 ");
+		
+		if (array[2][0] < 10) 
+			document.write("0"+array[2][0]);																<!-- 파일별 변경 필요 -->
+		else 
+			document.write(array[2][0]);																	<!-- 파일별 변경 필요 -->
+	
+		document.write("일 ");
+	</script>
+		</font>
+	</h2>
+
+	<!-- intro 1로 이동 -->
+	<!----------------------------------------->
+	<script type='text/javascript'>
+	// 전역 변수 선언 부분
+	var currentDay = 1; // 이미지 변환을 위한 인덱스
+	var currentHour = 0;// 이미지 변환을 위한 인덱스
+	var dateIndex = 0; // 날짜정보 변환을 위한 인덱스
+
+	var $view1 = null; // RGB
+	var $view2 = null; // SST
+	var $pic1 = null;
+	var $pic2 = null;
+	var timerID = 0;
+
+	// 시작 부분
+	$(document).ready(function() {
+		// 전역 요소 초기화 함수 호출
+		init();
+		// 이벤트 초기화 함수 호출
+		initEvent();
+	})
+
+	// 전역 요소 초기화
+	function init() {
+		$view1 = $("#view1");
+		$view2 = $("#view2");
+		$pic1 = $("#divborder1").children().last();
+		$pic2 = $("#divborder2").children().last();
+	}
+
+	// 이벤트 초기화 함수
+	function initEvent() {
+		// 오토 플레이 실행
+
+		startAutoPlay();
+
+	}
+
+	// 오토 플레이 실행
+	function startAutoPlay() {
+		if (timerID == 0) {
+			timerID = setInterval(function() {
+				nextImage();
+			}, 1000);
+		}
+	}
+
+	// 다음 이미지
+	function nextImage() {
+		dateIndex++;
+		if(dateIndex == array[0].length){
+			console.log()
+			clearInterval(timerID);
+			$("#bground").attr("class", "view3");
+			 setTimeout(function(){
+				 window.location.reload(true);
+			 },10000);
+		}
+		
+		var hour = currentHour + 1;
+		
+		var picDay = currentHour >= 6 ? currentDay + 1 : currentDay;
+		var picHour = currentHour == 6 ? 0 : currentHour == 7 ? 1 : currentHour + 2;
+		
+		$pic1.attr("class", "view1");
+		$pic1.prev().attr("class", "view2");
+		$pic1.prev().prev().attr("src","./img_h/RGB_Local_Day"+picDay+"_"+picHour+".JPG");
+		
+		
+		$pic2.attr("class", "view1");
+		$pic2.prev().attr("class", "view2");
+		$pic2.prev().prev().attr("src","./img_h/SST_Local_Day"+picDay+"_"+picHour+".JPG");
+		
+		setTimeout(function(){
+			$pic1.prependTo($("#divborder1"));
+			$pic2.prependTo($("#divborder2"));
+			$pic1 = $("#divborder1").children().last();
+			$pic2 = $("#divborder2").children().last();
+		}, 800)
+
+		
+		if (hour >= 8) {
+			hour = 0;
+			currentDay += 1;
+			if (currentDay >= 8) // default 8
+				currentDay = 1;
+		}
+		
+		currentHour = hour;
+		showDate();
+	}
+
+	// index 번째 날짜 출력
+	function showDate(){
+		console.log("dateIndex : ",dateIndex);
+		var dateString = array[0][dateIndex]+"년 ";
+		var picString = array[0][dateIndex]+"-";
+		
+		if(array[1][dateIndex]<10){
+			picString += "0" + array[1][dateIndex]+"-";
+			dateString += "0" + array[1][dateIndex]+"월 ";
+			
+		}else{
+			dateString += array[1][dateIndex]+"월 ";
+			picString += array[1][dateIndex]+"-";
+		}
+		
+		if (array[2][dateIndex] < 10){
+			dateString += "0" + array[2][dateIndex];																
+			picString += "0" + array[2][dateIndex];
+		} else {
+			dateString += array[2][dateIndex];																
+			picString += array[2][dateIndex];																
+		}
+		
+		picString = picString + " 0" + array[3][dateIndex]+ " UTC";
+		dateString += "일 ";
+		
+		$("#showDate").html(dateString);
+		$("#picDate").html(picString);
+	}
+	
+	</script>
+
+	<!-- 위경도 정보 표출 -->
+	<!--------------------->
+	<div class="col-md-7" style="position: absolute; left: 1035px; top: 177px;">
+		<font color="white" size="2px"> 116&deg; E</font>
+	</div>
+	<div class="col-md-7" style="position: absolute; left: 1170px; top: 177px;">
+		<font color="white" size="2px"> 121&deg; E</font>
+	</div>
+	<div class="col-md-7" style="position: absolute; left: 1305px; top: 177px;">
+		<font color="white" size="2px">126&deg; E</font>
+	</div>
+	<div class="col-md-7" style="position: absolute; left: 1440px; top: 177px;">
+		<font color="white" size="2px">131&deg; E</font>
+	</div>
+	<div class="col-md-7" style="position: absolute; left: 1580px; top: 177px;">
+		<font color="white" size="2px"> 136&deg; E</font>
+	</div>
+	<div class="col-md-7" style="position: absolute; left: 1720px; top: 177px;">
+		<font color="white" size="2px"> 141&deg; E</font>
+	</div>
+	<div class="col-md-7" style="position: absolute; left: 990px; top: 255px;">
+		<font color="white" size="2px">41&deg; N</font>
+	</div>
+	<div class="col-md-7" style="position: absolute; left: 990px; top: 460px;">
+		<font color="white" size="2px">36&deg; N</font>
+	</div>
+	<div class="col-md-7" style="position: absolute; left: 990px; top: 655px;">
+		<font color="white" size="2px">31&deg; N</font>
+	</div>
+	<div class="col-md-7" style="position: absolute; left: 990px; top: 865px;">
+		<font color="white" size="2px">26&deg; N</font>
+	</div>
+
+	<!-- 그리드, 컬러맵 표출 -->
+	<!--------------------->
+	<div class="col-md-7" style="position: absolute; left: 1032px; top: 200px; z-index: 3;">
+		<img src="./set_SST.png" style="width: 725px;"></img>
+	</div>
+	<font id="picDate" color="black" style="font-weight: bold; z-index: 100; position: absolute; left: 160px; top: 200px;" size="6px"><b> <script type="text/javascript">
+		document.write(array[0][dateIndex])																		<!-- 파일별 변경 필요 -->
+		document.write("-");
+		if(array[1][dateIndex]<10){
+			document.write("0"+ array[1][dateIndex]);
+		}else{
+			document.write(array[1][dateIndex])
+		}
+		document.write("-");
+		if (array[2][dateIndex] < 10) {
+			document.write("0"+array[2][dateIndex]);																<!-- 파일별 변경 필요 -->
+		}
+		else document.write(array[2][dateIndex]);																	<!-- 파일별 변경 필요 -->	
+		document.write(" 0");
+		document.write(array[3][dateIndex])																		<!-- 파일별 변경 필요 -->
+		document.write(" UTC");
+	</script>
+	</b></font>
+
+
+	<!-- 이미지 정보 표출 -->
+	<div id="divborder1">
+		<img src="./img_h/RGB_Local_Day1_2.JPG" class="view1" width="720" height="720" style="position: absolute; left: 150px; top: 200px; margin: 0 0 0 0">
+		<img src="./img_h/RGB_Local_Day1_1.JPG" class="view1" width="720" height="720" style="position: absolute; left: 150px; top: 200px; margin: 0 0 0 0" > 
+		<img src="./img_h/RGB_Local_Day1_0.JPG" class="view2" width="720" height="720" style="position: absolute; left: 150px; top: 200px; margin: 0 0 0 0" > 
+	</div>
+	<div id="divborder2">
+		<img src="./img_h/SST_Local_Day1_2.JPG" class="view1" width="720" height="720" style="position: absolute; left: 1050px; top: 200px; margin: 0 0 0 0" >
+		<img src="./img_h/SST_Local_Day1_1.JPG" class="view1" width="720" height="720" style="position: absolute; left: 1050px; top: 200px; margin: 0 0 0 0"> 
+		<img src="./img_h/SST_Local_Day1_0.JPG" class="view2" width="720" height="720" style="position: absolute; left: 1050px; top: 200px; margin: 0 0 0 0" > 
+	</div>
+	<!--------------------->
+	<h2>
+		<font color="white" size="6px" style="position: absolute; left: 300px; top: 950px;">천연색 합성 (RGB Composition)</font>
+	</h2>
+	<h2>
+		<font color="white" size="6px" style="position: absolute; left: 1110px; top: 950px;">해수표면온도 (Sea Surface Temperature)</font>
+	</h2>
+	<font color="white" size="5px" style="position: absolute; left: 1520px; top: 990px;"> * Himawari-8 위성 자료</font>
+
+	<div class="space"></div>
+	<div class="space"></div>
+	<div class="space"></div>
+
+	<!-- JavaScript files placed at the end of the document so the pages load faster
+		================================================== -->
+	<!-- Jquery and Bootstap core js files -->
+
+	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
+	<!-- Modernizr javascript -->
+	<script type="text/javascript" src="plugins/modernizr.js"></script>
+
+	<!-- Isotope javascript -->
+	<script type="text/javascript" src="plugins/isotope/isotope.pkgd.min.js"></script>
+
+	<!-- Backstretch javascript -->
+	<script type="text/javascript" src="plugins/jquery.backstretch.min.js"></script>
+
+	<!-- Appear javascript -->
+	<script type="text/javascript" src="plugins/jquery.appear.js"></script>
+
+	<!-- Initialization of Plugins -->
+	<script type="text/javascript" src="js/template.js"></script>
+
+	<!-- Custom Scripts -->
+	<script type="text/javascript" src="js/custom.js"></script>
+</body>
+</html>

@@ -1,0 +1,535 @@
+<?
+include $_SERVER[DOCUMENT_ROOT]."/include/header.html";
+
+function GetIP(){
+	if (getenv("HTTP_CLIENT_IP") && strcasecmp(getenv("HTTP_CLIENT_IP"), "unknown"))
+	{
+		$ip = getenv("HTTP_CLIENT_IP");  
+	}
+	else if (getenv("HTTP_X_FORWARDED_FOR") && strcasecmp(getenv("HTTP_X_FORWARDED_FOR"), "unknown"))
+	{
+		$ip = getenv("HTTP_X_FORWARDED_FOR"); 
+	}else if (getenv("REMOTE_ADDR") && strcasecmp(getenv("REMOTE_ADDR"), "unknown"))
+	{
+		$ip = getenv("REMOTE_ADDR");
+	}else if (isset($_SERVER["REMOTE_ADDR"]) && $_SERVER["REMOTE_ADDR"] && strcasecmp($_SERVER["REMOTE_ADDR"], "unknown")) 
+	{
+		$ip = $_SERVER["REMOTE_ADDR"];
+	}
+	else
+	{
+		$ip = "unknown";
+	}
+	return($ip);
+}
+
+//접속자 로그 쌓기
+$u_ip = GetIP();
+$inQry = "insert into site_visit (visit_ip, visit_count, regdate) values ('{$u_ip}', 1, now()) ";
+dbQuery($inQry, $gameDbc);
+
+//goci issue 확인
+$gociQry = "select goci_issue_check_kor from site_config where idx = 1";
+$goci_issue_check = dbQueryOne($gociQry,$gameDbc);
+
+If($goci_issue_check == "Y") {
+	$gociQry = "select * from tb_goci_issue where kor_eng = 'kor' order by id desc limit 1";
+	$gociRes = dbQuery($gociQry, $gameDbc);
+
+	while ( $gociArr = @mysql_fetch_array($gociRes) )	{
+
+		$goci_filename = $gociArr[filename];
+		$goci_filepath = $gociArr[filepath];
+	}
+
+}
+
+//폴더에서 이미지 읽어오기
+$img_cot = 0;
+$dir_hnd = opendir("./img/goci"); // image 폴더를 액세스 할수 있게 엽니다. 
+
+while ($i_name = readdir($dir_hnd)) // 이미지 파일 이름들을 읽어 들입니다. 
+{ 	
+	if( !is_dir($i_name) && $i_name) {
+		$img_goci[$img_cot] = "/img/goci/".$i_name; // 이미지 파일 이름들을 배열에 저장합니다. 
+
+		$img_cot++;
+	}
+}
+closedir($dir_hnd);
+
+sort($img_goci);
+
+For($i=0; $i < count($img_goci); $i++ ) {
+	$goci_main_img_html .= "<img src='{$img_goci[$i]}' width='478' height='490'>";
+}
+
+$img_cot = 0;
+$dir_hnd = opendir("./img/noaa"); // image 폴더를 액세스 할수 있게 엽니다. 
+
+while ($i_name = readdir($dir_hnd)) // 이미지 파일 이름들을 읽어 들입니다. 
+{ 	
+	if( !is_dir($i_name) && $i_name) {
+		$img_noaa[$img_cot] = "/img/noaa/".$i_name; // 이미지 파일 이름들을 배열에 저장합니다. 
+
+		$img_cot++;
+	}
+} 
+closedir($dir_hnd);
+
+sort($img_noaa);
+
+For($i=0; $i < count($img_noaa); $i++ ) {
+	$noaa_main_img_html .= "<img src='{$img_noaa[$i]}' width='478' height='490'>";
+}
+
+$img_cot = 0;
+$dir_hnd = opendir("./img/terra"); // image 폴더를 액세스 할수 있게 엽니다. 
+
+while ($i_name = readdir($dir_hnd)) // 이미지 파일 이름들을 읽어 들입니다. 
+{ 	
+	if( !is_dir($i_name) && $i_name) {
+		$img_terra[$img_cot] = "/img/terra/".$i_name; // 이미지 파일 이름들을 배열에 저장합니다. 
+
+		$img_cot++;
+	}
+} 
+closedir($dir_hnd);
+
+sort($img_terra);
+
+For($i=0; $i < count($img_terra); $i++ ) {
+	$terra_main_img_html .= "<img src='{$img_terra[$i]}' width='478' height='490'>";
+}
+
+$img_cot = 0;
+$dir_hnd = opendir("./img/aqua"); // image 폴더를 액세스 할수 있게 엽니다. 
+
+while ($i_name = readdir($dir_hnd)) // 이미지 파일 이름들을 읽어 들입니다. 
+{ 	
+	if( !is_dir($i_name) && $i_name) {
+		$img_aqua[$img_cot] = "/img/aqua/".$i_name; // 이미지 파일 이름들을 배열에 저장합니다. 
+
+		$img_cot++;
+	}
+} 
+closedir($dir_hnd);
+
+sort($img_aqua);
+
+For($i=0; $i < count($img_aqua); $i++ ) {
+	$aqua_main_img_html .= "<img src='{$img_aqua[$i]}' width='478' height='490'>";
+}
+
+//최신스케줄
+//goci
+$qry = "SELECT LEFT(MAX(create_date),10) FROM tb_distribution WHERE sensor_name = 'GOCI'";
+
+$goci_max_date = dbQueryOne($qry,$gameDbc);
+
+$qry = "SELECT RIGHT(TRANSFER_DATE,5) as goci_time FROM tb_distribution WHERE product_type = '01012206' AND sensor_name = 'GOCI' AND DATE(create_date) = '{$goci_max_date}' ORDER BY create_date";
+$res = dbQuery($qry, $gameDbc);
+
+$gociHtml = $goci_max_date." ( ";
+
+while ( $arr = @mysql_fetch_array($res) )	{
+
+	$goci_time = $arr[goci_time];
+
+	$gociHtml .= $goci_time.", ";
+}
+
+$gociHtml .= " )";
+
+//noaa
+$qry = "SELECT LEFT(MAX(create_date),10) FROM tb_distribution WHERE sensor_name = 'NOAA'";
+
+$noaa_max_date = dbQueryOne($qry,$gameDbc);
+
+$qry = "SELECT RIGHT(TRANSFER_DATE,5) as noaa_time FROM tb_distribution WHERE sensor_name = 'NOAA' AND DATE(create_date) = '{$noaa_max_date}' ORDER BY create_date";
+$res = dbQuery($qry, $gameDbc);
+
+$noaaHtml = $noaa_max_date." ( ";
+
+while ( $arr = @mysql_fetch_array($res) )	{
+
+	$noaa_time = $arr[noaa_time];
+
+	$noaaHtml .= $noaa_time.", ";
+}
+
+$noaaHtml .= " )";
+
+//AQUA 
+$qry = "SELECT LEFT(MAX(create_date),10) FROM tb_distribution WHERE sensor_name = 'MODIST'";
+
+$aqua_max_date = dbQueryOne($qry,$gameDbc);
+
+$qry = "SELECT RIGHT(TRANSFER_DATE,5) as aqua_time FROM tb_distribution WHERE sensor_name = 'MODIST' AND DATE(create_date) = '{$aqua_max_date}' ORDER BY create_date";
+$res = dbQuery($qry, $gameDbc);
+
+$aquaHtml = $aqua_max_date." ( ";
+
+while ( $arr = @mysql_fetch_array($res) )	{
+
+	$aqua_time = $arr[aqua_time];
+
+	$aquaHtml .= $aqua_time.", ";
+}
+
+$aquaHtml .= " )";
+
+//TERRA 
+$qry = "SELECT LEFT(MAX(create_date),10) FROM tb_distribution WHERE sensor_name = 'MODISA'";
+
+$terra_max_date = dbQueryOne($qry,$gameDbc);
+
+$qry = "SELECT RIGHT(TRANSFER_DATE,5) as terra_time FROM tb_distribution WHERE sensor_name = 'MODISA' AND DATE(create_date) = '{$terra_max_date}' ORDER BY create_date";
+$res = dbQuery($qry, $gameDbc);
+
+$terraHtml = $terra_max_date." ( ";
+
+while ( $arr = @mysql_fetch_array($res) )	{
+
+	$terra_time = $arr[terra_time];
+
+	$terraHtml .= $terra_time.", ";
+}
+
+$terraHtml .= " )";
+
+?>
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=medium-dpi" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="/css/style_kosc_common.css" />
+	<link rel="stylesheet" href="/css/style_kosc_main.css" />
+	<script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>	
+	<script type="text/javascript" src="/js/script_kosc.js"></script>
+	<script type="text/javascript" src="/js/jquery.cycle2.js"></script>
+	<title>해양위성센터</title>
+</head>
+<script>
+function organGo1() {
+	var GoUrl = $('#organGo1 option:selected').val();
+
+	if (GoUrl != "산하기관")		
+	{
+		window.open(GoUrl,"_blank");
+		//window.location = GoUrl;
+	}
+}
+
+function organGo2() {
+	var GoUrl = $('#organGo2 option:selected').val();
+
+	if (GoUrl != "유관기관")		
+	{
+		window.open(GoUrl,"_blank");
+		//window.location = GoUrl;
+	}
+}
+
+</script>
+<body>
+	<div class="wrap-all">
+		<div class="skipNav">
+			<ul class="clearFix">
+				<li><a href="#main-container">메인 컨텐츠 바로가기</a></li>
+			</ul>
+		</div><!-- .skipNav -->
+		<!-- ************************ Header 영역 ************************ -->
+		<?
+		include $_SERVER[DOCUMENT_ROOT]."/include/top_menu.html";
+		?>
+		<!-- ************************ end Header 영역 ************************ -->
+
+		<!-- ************************ Content 영역 ************************ -->
+		<div class="main-container" id="main-container">
+			<div class="mainContent_1 clearFix">
+				<div class="area-satellite">
+					<div class="area-tabList">
+						<ul class="clearFix">
+							<? If($goci_issue_check == "Y") { ?><li class="current"><button type="button">GOCI Issue Image</button></li><? } ?>
+							<li <? If($goci_issue_check == "N") { ?>class="current" <? } ?>><button type="button">GOCI</button></li>
+							<li><button type="button">AVHRR</button></li>
+							<li><button type="button" style="line-height:15px;">MODIS(AQUA)</button></li>
+							<li><button type="button" style="line-height:15px;">MODIS(TERRA)</button></li>
+						</ul>
+					</div><!-- .area-tabList -->
+					<div class="area-tabContent">
+						<? If($goci_issue_check == "Y") { ?><div><img src="<?=$goci_filepath.$goci_filename?>" alt="GOCI Issue Image" /></div><? } ?><!-- tabContent_01 -->
+
+						<div class="cycle-slideshow" data-cycle-timeout="2000">
+							<?=$goci_main_img_html?>
+						</div>
+						<div class="cycle-slideshow" data-cycle-timeout="2000">
+							<?=$noaa_main_img_html?>
+						</div>
+						<div class="cycle-slideshow" data-cycle-timeout="2000">
+							<?=$aqua_main_img_html?>
+						</div>
+						<div class="cycle-slideshow" data-cycle-timeout="2000">							
+							<?=$terra_main_img_html?>
+						</div>
+
+					</div><!-- .area-tabContent -->
+				</div><!-- .area-satellite -->
+
+				<div class="area-shortcut_1">
+					<ul class="clearFix shortcutList">
+						<li class="shortcut_1_01"><a href="/p50/kosc_p52.html">연구논문</a></li>
+						<li class="shortcut_1_02 bg-gray"><a href="/p60/kosc_p62.html">기술용어 바로가기</a></li>
+						<li class="shortcut_1_03 bg-gray"><a href="/p30/kosc_p33.html">GDPS 산출물</a></li>
+						<li class="shortcut_1_04"><a href="/p30/kosc_p34.html">GDPS 다운로드</a></li>
+					</ul>
+					<div class="appExam">
+						<p>GOCI 활용영상</p>
+						<a href="#" class="btn-more btn-goGreen">활용영상 더보기</a>
+						<ul class="clearFix">
+							<li><a href="#"><img src="/img/img_exam_1.png" alt="활용영상게시물 제목1" /><span>활용영상게시물 제목1</span></a></li>
+							<li><a href="#"><img src="/img/img_exam_2.png" alt="활용영상게시물 제목2" /><span>활용영상게시물 제목2</span></a></li>
+						</ul>
+					</div><!-- .appExam -->
+				</div><!-- .area-shortcut_1 -->
+
+				<?
+				//우측 베너 
+				$listQry = "select * from main_banner where kor_eng = 'kor'";
+				//echo $listQry;
+				$res = dbQuery($listQry, $gameDbc);
+
+				while ( $arr = @mysql_fetch_array($res) )	{
+
+					$id = $arr[id];
+					$filename1 = $arr[filename1];
+					$link1 = $arr[link1];
+					$filename2 = $arr[filename2];
+					$link2 = $arr[link2];
+					$filename3 = $arr[filename3];
+					$link3 = $arr[link3];
+					$filename4 = $arr[filename4];
+					$link4 = $arr[link4];
+					$filepath = $arr[filepath];
+					$regdate = $arr[regdate];
+					$regdate = substr($regdate,0,10);
+
+					$link3 = str_replace("자료이용신청서.zip", urlencode("자료이용신청서.zip"), $link3);
+
+				}
+				?>
+				<div class="area-shortcut_2">
+					<ul>
+<!-- 						<li><a href="<?=$link1?>"><img src="<?=$filepath.$filename1?>" alt="Contack us - 문의사항이 있다면 연락주세요." /></a></li> -->
+						<li><a href="mailto:byunghwa.son@kiost.ac.kr"><img src="<?=$filepath.$filename1?>" alt="Contack us - 문의사항이 있다면 연락주세요." /></a></li>
+						<li><a href="<?=$link2?>"><img src="<?=$filepath.$filename2?>" alt="Q&amp;A - 질문과 답변" /></a></li>
+						<li><a href="<?=$link3?>"><img src="<?=$filepath.$filename3?>" alt="GOCI 자료이용 신청서 - 신청서를 작성하세요." /></a></li>
+						<li><a href="<?=$link4?>"><img src="<?=$filepath.$filename4?>" alt="천리안 해양관측위성 소개 - 한반도의 해양환경을 관측하는 세계최초 정지궤도 운행위성" /></a></li>
+					</ul>		
+				</div><!-- .area-shortcut_2 -->
+			</div><!-- .mainContent_1 -->
+			<?
+			//공지사항 리스트
+			//-> 게시판 리스팅 가져오기
+			$listQry = "select *, IF(DATE(DRAW_DATE) = DATE(NOW()), 1, 0) AS NEW_VIEW from tb_notice where YN_USE = 1 and kor_eng = 'kor'";
+			$listQry .=" order by ID desc limit 4";
+			//echo $listQry;
+			$res = dbQuery($listQry, $gameDbc);
+
+			$whileCnt = 0;
+			while ( $arr = @mysql_fetch_array($res) )	{
+
+				$id_notice = $arr[ID];
+				$title = $arr[TITLE];
+				$draw_date = $arr[DRAW_DATE];
+				$draw_date = substr($draw_date,0,10);
+
+				$link_str = "/p60/kosc_p61_v.html?id_notice={$id_notice}&cp=1";	
+				
+				$htmlNoticeStr .= "<tr>
+						<td><a href='{$link_str}'>{$re_class}{$title}</a></td>
+						<td>{$draw_date}</td>
+					</tr>";
+			}
+			?>
+			<div class="mainContent_2 clearFix">
+				<div class="area-notice">
+					<p>공지사항</p>
+					<a href="/p60/kosc_p61.html" class="btn-more btn-goBlue">공지사항 더보기</a>
+					<table class="table-hoz-blue">
+						<caption class="hidden">공지사항 상세내용</caption>
+						<colgroup>
+							<col style="width:65%;" />
+							<col />
+						</colgroup>
+
+						<thead>
+							<tr>
+								<th>제목</th>
+								<th>작성일</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?=$htmlNoticeStr?>							
+						</tbody>
+					</table>
+				</div><!-- .area-notice -->
+
+				<div class="area-schedule">
+					<p>GOCI 운영스케줄</p>
+					<a href="/p10/kosc_p12.html" class="btn-more btn-goGreen">GOCI 운영스케줄 더보기</a>
+					<table class="table-hoz-green">
+						<caption class="hidden">GOCI 운영스케줄 상세내용</caption>
+						<colgroup>
+							<col />
+						</colgroup>
+
+						<tbody>
+							<tr>
+								<td><a href="/p10/kosc_p12.html">GOCI : <?=$gociHtml?></a></td>								
+							</tr>
+							<tr>
+								<td><a href="/p10/kosc_p12.html">AVHRR : <?=$noaaHtml?></a></td>								
+							</tr>
+							<tr>
+								<td><a href="/p10/kosc_p12.html">MODIS(AQUA) : <?=$aquaHtml?></a></td>								
+							</tr>
+							<tr>
+								<td><a href="/p10/kosc_p12.html">MODIS(TERRA) : <?=$terraHtml?></a></td>
+							</tr>
+							<tr>
+								<td><a href="/p10/kosc_p12.html">VIIRS : <?=$terraHtml?></a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div><!-- .area-schedule -->
+
+				<div class="area-qrCode">
+					<img src="/img/img_qrcode.png" alt="해양위성센터 QR코드" />
+					<p class="mt-5"><span class="txt-navy">QR코드로</span> <span class="txt-blue">해양위성센터<br />모바일 홈페이지</span>를 만나보세요.</p>
+					<p class="addition">즐겨찾기를 하시면 편리합니다.</p>
+					
+				</div><!-- .area-qrCode -->
+				
+				<div class="area-familySite">
+					<p>
+						<select title="본부 및 소속기관 선택" name="organGo1" id="organGo1">
+							<option value="산하기관">본부 및 소속기관</option>
+							<option value="http://www.mof.go.kr">해양수산부</option>
+							<option value="http://www.kiost.ac.kr">한국해양과학기술원</option>
+						</select>
+						<button type="button" onclick="organGo1()">GO</button>
+					</p>
+					<p>
+						<select title="유관기관 선택" name="organGo2" id="organGo2">
+							<option>유관기관</option>
+							<option value="http://www.nifs.go.kr">국립수산과학원</option>
+							<option value="http://www.ndmi.go.kr">국립재난안전연구원</option>
+							<option value="http://www.nier.go.kr">국립환경과학원</option>
+							<option value="http://www.kier.re.kr">한국에너지기술연구원</option>
+							<option value="http://www.kari.re.kr">한국항공우주연구원</option>
+							<option value="http://nmsc.kma.go.kr">국가기상위성센터</option>
+							<option value="http://www.nsic.go.kr">국가공간정보유통시스템</option>
+							<option value="http://www.knmm.or.kr">국립해양박물관</option>
+						</select>
+						<button type="button" onclick="organGo2()">GO</button>
+					</p>
+				</div><!-- .area-familySite -->
+			</div><!-- .mainContent_2 -->
+		</div><!-- .main-container -->
+		<!-- ************************ end Content 영역 ************************ -->
+
+		
+
+		<!-- ************************ Footer 영역 ************************ -->
+		<?
+		include $_SERVER[DOCUMENT_ROOT]."/include/footer.html";
+		?>
+		<!-- ************************ end Footer 영역 ************************ -->
+	</div><!-- .wrap-all -->
+
+<?
+$nowDate = date("Y-m-d");
+
+//팝업정보 가져오기
+$qry = "SELECT * FROM tb_popup_list WHERE DATE(start_date) <= '{$nowDate}' AND DATE(end_date) >= '{$nowDate}' AND kor_eng = 'kor'";
+$res = dbQuery($qry, $gameDbc);
+
+$popHTML = "";
+
+$whileCnt = 1;
+
+while ( $arr = @mysql_fetch_array($res) )	{
+
+	$pop_id = $arr[id];
+	$pop_title = $arr[title];
+	$layer_check = $arr[layer_check];
+	$w_size = $arr[w_size];
+	$h_size = $arr[h_size];
+	$t_location = $arr[t_location];
+	$l_location = $arr[l_location];
+	$pop_filepath = $arr[filepath];
+	$pop_filename = $arr[filename];
+
+	$layerName = "popupLayer".$whileCnt;
+	$LayerImg = "LayerImg".$whileCnt;
+
+	if($layer_check == "Y") {
+		$popHTML .= "popLayerOpen('{$layerName}', '{$LayerImg}', '{$pop_title}', '{$w_size}', '{$h_size}', '{$t_location}', '{$l_location}', '{$pop_filepath}', '{$pop_filename}');";
+	} else {
+		$popHTML .=  "popOpen('{$pop_title}', '{$w_size}', '{$h_size}', '{$t_location}', '{$l_location}', '{$pop_id}');";
+	}
+
+	
+?>
+		<!-- 팝업 레이어 -->
+		<div class="popup" id="<?=$layerName?>" style="display:none;">
+			<p class="title-popup">공지사항</p>
+			<button type="button" class="btn-popClose">스케줄 내용 창 닫기</button>
+
+			<div class="cont-popup">
+				<table class="table-schedule mb-10">
+					<colgroup>
+						<col style="width:100%;" />
+					</colgroup>
+
+					<tbody>
+						<tr>
+							<td><img id="<?=$LayerImg?>" src=""></td>
+						</tr>
+					</tbody>
+				</table>
+				
+			</div><!-- .cont-popup -->
+			
+		</div>
+		<!-- 팝업 레이어 -->
+<?
+	//echo $whileCnt."<br>";
+	$whileCnt++;
+}
+?>
+
+<script>
+
+function popOpen(title, w, h, t, l, seq) {
+	window.open("/pop_view.html?id="+seq, "kosc"+seq, "width="+w+"px,height="+h+"px,top="+t+"px,left="+l+"px");
+}
+
+function popLayerOpen(layerName, LayerImg, title, w, h, t, l, filepath, filename) {
+	//alert($('#popupImg'));
+	$("#"+layerName).css("width", w+"px");
+	$("#"+layerName).css("height", h+"px");
+	$("#"+layerName).css("top", t+"px");
+	$("#"+layerName).css("left", l+"px");
+	$("#"+LayerImg).attr("src", filepath+filename);
+	$("#"+layerName).show();
+}
+
+<?=$popHTML?>
+</script>
+</body>
+</html>

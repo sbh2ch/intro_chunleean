@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tttt</title>
+</head>
+<body>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(window).scroll(function () {
+            var position = $(window).scrollTop();
+            console.log(position);
+            if (position > 100 && position <= 300) {
+                $(".myAudio").trigger('pause');
+                $("#player1").trigger('play');
+            } else if (position > 300 && position <= 500) {
+                $(".myAudio").trigger('pause');
+                $("#player2").trigger('play');
+            } else if (position > 500 && position <= 700) {
+                $(".myAudio").trigger('pause');
+                $("#player3").trigger('play');
+            } else if (position > 700 && position <= 900) {
+                $(".myAudio").trigger('pause');
+                $("#player4").trigger('play');
+            } else if (position > 900 && position <= 1100) {
+                $(".myAudio").trigger('pause');
+                $("#player5").trigger('play');
+            }
+        });
+    });
+    var vol;
+    function volUp() {
+        var volume = $(".myAudio").prop("volume") + 0.2;
+        if (volume > 1) {
+            volume = 1;
+        }
+        $(".myAudio").prop("volume", volume);
+    }
+    function volDown() {
+        var volume = $(".myAudio").prop("volume") - 0.2;
+        if (volume < 0) {
+            volume = 0;
+        }
+        $(".myAudio").prop("volume", volume);
+    }
+</script>
+<div style="display:none" id="hiddenDiv"></div>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<button onclick="javascript:volUp()">volUp</button>
+<button onclick="javascript:volDown()">voldown</button>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<audio class="myAudio" id="player1" controls="controls" style="display: none">
+    <source src="http://www.noiseaddicts.com/samples_1w72b820/2514.mp3" type="audio/mpeg"/>
+</audio>
+<audio class="myAudio" id="player2" controls="controls" style="display: none">
+    <source src="http://www.noiseaddicts.com/samples_1w72b820/29.mp3" type="audio/mpeg"/>
+</audio>
+<audio class="myAudio" id="player3" controls="controls" style="display: none">
+    <source src="http://www.noiseaddicts.com/samples_1w72b820/37.mp3" type="audio/mpeg"/>
+</audio>
+<audio class="myAudio" id="player4" controls="controls" style="display: none">
+    <source src="http://www.noiseaddicts.com/samples_1w72b820/2226.mp3" type="audio/mpeg"/>
+</audio>
+<audio class="myAudio" id="player5" controls="controls" style="display: none">
+    <source src="http://www.noiseaddicts.com/samples_1w72b820/4261.mp3" type="audio/mpeg"/>
+</audio>
+</body>
+</html>

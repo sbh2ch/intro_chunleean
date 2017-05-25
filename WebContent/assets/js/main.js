@@ -138,7 +138,7 @@
         
         var $navigation = $('#navigation');
         
-        $('.nav-trigger-open').click(function(){
+        $('.nav-trigger-open > .myNav').click(function(){
             $navigation.fadeIn('fast');
         });
         
