@@ -78,17 +78,17 @@
 <div class="border-site bs-left"></div>
 <div class="border-site bs-bottom"></div>
 <!-- //BORDER 끝 -->
-<script>
-    function fn_volumeUp(flag) {
-        if (flag == 'up') {
-            console.log('volume Up');
-        } else if (flag == 'down') {
-            console.log('volume down');
-        } else {
-            console.log('Mute');
-        }
-    }
-</script>
+<!--<script>-->
+<!--function fn_volumeUp(flag) {-->
+<!--if (flag == 'up') {-->
+<!--console.log('volume Up');-->
+<!--} else if (flag == 'down') {-->
+<!--console.log('volume down');-->
+<!--} else {-->
+<!--console.log('Mute');-->
+<!--}-->
+<!--}-->
+<!--</script>-->
 
 
 <!-- NAV TRIGGER 시작 -->
@@ -98,13 +98,16 @@
     </div>
     <!-- //.nav-toggle -->
     <div class="nav-toggle myVolume" style="right: 90px;">
-        <a onclick="javascript:fn_volumeUp('up')" style="color: #026cff; font-size: 28px;"><i class="fa fa-volume-up"></i></a>
+        <a onclick="javascript:fn_volumeUp('up')" style="color: #026cff; font-size: 28px;"><i
+                class="fa fa-volume-up"></i></a>
     </div>
     <div class="nav-toggle myVolume" style="right: 130px;">
-        <a onclick="javascript:fn_volumeUp('down')" style="color: #026cff; font-size: 28px;"><i class="fa fa-volume-down"></i></a>
+        <a onclick="javascript:fn_volumeUp('down')" style="color: #026cff; font-size: 28px;"><i
+                class="fa fa-volume-down"></i></a>
     </div>
     <div class="nav-toggle myVolume" style="right: 170px;">
-        <a onclick="javascript:fn_volumeUp('mute')" style="color: #026cff; font-size: 28px;"><i class="fa fa-volume-off"></i></a>
+        <a onclick="javascript:fn_volumeUp('mute')" style="color: #026cff; font-size: 28px;"><i
+                class="fa fa-volume-off"></i></a>
     </div>
 </div>
 <!-- //NAV TRIGGER 끝 -->
@@ -191,7 +194,7 @@
                         <div class="hero-title display-inline-block position-relative">
                             <span style="font-weight: 900; font-size: 25px; color: #ffffff;">반가워</span>
                             <h2 class="font-family-alt title-extra-large-4" style="color: #ffffff; font-size: 60px">
-                                난 <span style="color: #ffffff; font-weight: bold; font-size: 80px;">천리안</span>이야.
+                                난 천리안이야.
                             </h2>
                         </div>
                     </div>
@@ -247,7 +250,10 @@
             <div class="row">
                 <div class="col-md-12">
                     <h3 class="section-title display-inline-block font-family-alt margin-4 no-margin-rl no-margin-top text-extra-large text-uppercase title-underline">
-                        01. 소개</h3>
+                        01. 소개 </h3>
+                    <p><a class="bgm" style="color: #026cff; font-size: 38px;"><i
+                            onclick="javascript:fn_audio('2',this)"
+                            class="fa fa-play-circle-o"></i></a></p>
 
                     <p class="font-weight-300 title-extra-large-3">
                         안녕, 어린이 친구들 :)<br/> 난 우주에 있는 <span class="font-weight-800" style="font-weight: bold;">천리안</span>이라고
@@ -274,6 +280,9 @@
                 <div class="col-md-12">
                     <h3 class="section-title display-inline-block font-family-alt margin-4 no-margin-rl no-margin-top text-extra-large text-uppercase title-underline">
                         02. 탄생</h3>
+                    <p><a class="bgm" style="color: #026cff; font-size: 38px;"><i
+                            onclick="javascript:fn_audio('3',this)"
+                            class="fa fa-play-circle-o"></i></a></p>
 
                     <p class="font-weight-300 title-extra-large-3">
                         첫 번째로 내가 어떻게 태어났는지 말해줄게.<br/> 내가 우주로 발사되기까지 자그마치 7년이나 걸렸어!
@@ -300,7 +309,7 @@
                                         <h4 class="subheading">착수</h4>
                                     </div>
                                     <div class="timeline-body">
-                                        <p>My mama always said, "Life was like a box of chocolates. You never know what you’re gonna get"</p>
+                                        <p>나를 교육과학기술부, 방송통신위원회, 해양수산부, 기상청 이렇게 4개 부서에서 함께 만들려고 계획했어</p>
                                     </div>
                                 </div>
                             </li>
@@ -316,7 +325,7 @@
                                         <h4 class="subheading">지상시스템 구축</h4>
                                     </div>
                                     <div class="timeline-body">
-                                        <p>My mama always said, "Life was like a box of chocolates. You never know what you’re gonna get"</p>
+                                        <p>내가 우주에서 지구로 정보를 주기위해 9m 수신 안테나와 지상운영시스템을 구축했어</p>
                                     </div>
                                 </div>
                             </li>
@@ -332,7 +341,7 @@
                                         <h4 class="subheading">발사</h4>
                                     </div>
                                     <div class="timeline-body">
-                                        <p>My mama always said, "Life was like a box of chocolates. You never know what you’re gonna get"</p>
+                                        <p>남미에 있는 기아나 우주센터에서 아리안5 발사체에 실려 우주로 떠났어!</p>
                                     </div>
                                 </div>
                             </li>
@@ -348,7 +357,8 @@
                                         <h4 class="subheading">네이버 테마지도 서비스 시작</h4>
                                     </div>
                                     <div class="timeline-body">
-                                        <p>My mama always said, "Life was like a box of chocolates. You never know what you’re gonna get"</p>
+                                        <p>그 이후로 난 매일매일 지구를 관측해서 정보를 얻고, 지구에 있는 많은곳에 정보를 나눠준단다. 네이버에 있는 위성테마지도도 내가
+                                            제공한다구</p>
                                     </div>
                                 </div>
                             </li>
@@ -364,7 +374,7 @@
                                         <h4 class="subheading">NASA와 업무협약</h4>
                                     </div>
                                     <div class="timeline-body">
-                                        <p>My mama always said, "Life was like a box of chocolates. You never know what you’re gonna get"</p>
+                                        <p>한국과 미국 공동 해양과학조사를 위해 NASA와 업무협약을 체결했어</p>
                                     </div>
                                 </div>
                             </li>
@@ -380,7 +390,7 @@
                                         <h4 class="subheading">2호기 발사 예정</h4>
                                     </div>
                                     <div class="timeline-body">
-                                        <p>My mama always said, "Life was like a box of chocolates. You never know what you’re gonna get"</p>
+                                        <p>지금도 과학자들은 내 동생인 천리안 2호를 만들기위해 노력하고있어! 2019년에 우주로 발사할 예정이야</p>
                                     </div>
                                 </div>
                             </li>
@@ -392,108 +402,121 @@
         </section>
         <!-- 내부 세션 종료 : TIMELINE -->
 
-        <!-- 이미지 슬라이더 시작 : 연구원 코멘트 -->
-        <div class="testimonial-slider flexslider">
-            <div class="slides">
-                <!-- Item 1 -->
-                <div class="item position-relative width-100">
-                    <div class="testimonial-image height-100 position-absolute">
-                        <img src="assets/images/testimonial/scientist1.jpg" alt="" class="img-responsive"/>
-                    </div>
+        <!--&lt;!&ndash; 이미지 슬라이더 시작 : 연구원 코멘트 &ndash;&gt;-->
+        <!--<div class="testimonial-slider flexslider">-->
+        <!--<div class="slides">-->
+        <!--&lt;!&ndash; Item 1 &ndash;&gt;-->
+        <!--<div class="item position-relative width-100">-->
+        <!--<div class="testimonial-image height-100 position-absolute">-->
+        <!--<img src="assets/images/testimonial/scientist1.jpg" alt="" class="img-responsive"/>-->
+        <!--</div>-->
 
-                    <div class="testimonial-content height-100">
-                        <div class="display-table height-100">
-                            <div class="display-table-cell vertical-align-middle">
-                                <p class="testimonial-quote display-block font-weight-300 title-extra-large">My mama always said, "Life was like a box of chocolates. You never know what you’re gonna get"</p>
+        <!--<div class="testimonial-content height-100">-->
+        <!--<div class="display-table height-100">-->
+        <!--<div class="display-table-cell vertical-align-middle">-->
+        <!--<p class="testimonial-quote display-block font-weight-300 title-extra-large">My mama-->
+        <!--always said, "Life was like a box of chocolates. You never know what you’re gonna-->
+        <!--get"</p>-->
 
-                                <p class="testimonial-author display-inline-block font-family-alt margin-3 no-margin-bottom no-margin-rl text-large text-uppercase title-underline">
-                                    박영제 - 한국해양과학기술원 부원장</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!--<p class="testimonial-author display-inline-block font-family-alt margin-3 no-margin-bottom no-margin-rl text-large text-uppercase title-underline">-->
+        <!--박영제 - 한국해양과학기술원 부원장</p>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
 
-                <!-- Item 2 -->
-                <div class="item position-relative width-100">
-                    <div class="testimonial-image height-100 position-absolute">
-                        <img src="assets/images/testimonial/scientist2.jpg" alt="" class="img-responsive"/>
-                    </div>
-                    <div class="testimonial-content height-100">
-                        <div class="display-table height-100">
-                            <div class="display-table-cell vertical-align-middle">
-                                <p class="testimonial-quote display-block font-weight-300 title-extra-large">My mama always said, "Life was like a box of chocolates. You never know what you’re gonna get"</p>
+        <!--&lt;!&ndash; Item 2 &ndash;&gt;-->
+        <!--<div class="item position-relative width-100">-->
+        <!--<div class="testimonial-image height-100 position-absolute">-->
+        <!--<img src="assets/images/testimonial/scientist2.jpg" alt="" class="img-responsive"/>-->
+        <!--</div>-->
+        <!--<div class="testimonial-content height-100">-->
+        <!--<div class="display-table height-100">-->
+        <!--<div class="display-table-cell vertical-align-middle">-->
+        <!--<p class="testimonial-quote display-block font-weight-300 title-extra-large">My mama-->
+        <!--always said, "Life was like a box of chocolates. You never know what you’re gonna-->
+        <!--get"</p>-->
 
-                                <p class="testimonial-author display-inline-block font-family-alt margin-3 no-margin-bottom no-margin-rl text-large text-uppercase title-underline">
-                                    조성익 - 해양위성센터장</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!--<p class="testimonial-author display-inline-block font-family-alt margin-3 no-margin-bottom no-margin-rl text-large text-uppercase title-underline">-->
+        <!--조성익 - 해양위성센터장</p>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
 
-                <!-- Item 3 -->
-                <div class="item position-relative width-100">
-                    <div class="testimonial-image height-100 position-absolute">
-                        <img src="assets/images/testimonial/scientist3.jpg" alt="" class="img-responsive"/>
-                    </div>
-                    <div class="testimonial-content height-100">
-                        <div class="display-table height-100">
-                            <div class="display-table-cell vertical-align-middle">
-                                <p class="testimonial-quote display-block font-weight-300 title-extra-large">My mama always said, "Life was like a box of chocolates. You never know what you’re gonna get"</p>
-                                <p class="testimonial-author display-inline-block font-family-alt margin-3 no-margin-bottom no-margin-rl text-large text-uppercase title-underline">
-                                    한희정 - 해양위성센터 개발팀장</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!--&lt;!&ndash; Item 3 &ndash;&gt;-->
+        <!--<div class="item position-relative width-100">-->
+        <!--<div class="testimonial-image height-100 position-absolute">-->
+        <!--<img src="assets/images/testimonial/scientist3.jpg" alt="" class="img-responsive"/>-->
+        <!--</div>-->
+        <!--<div class="testimonial-content height-100">-->
+        <!--<div class="display-table height-100">-->
+        <!--<div class="display-table-cell vertical-align-middle">-->
+        <!--<p class="testimonial-quote display-block font-weight-300 title-extra-large">My mama-->
+        <!--always said, "Life was like a box of chocolates. You never know what you’re gonna-->
+        <!--get"</p>-->
+        <!--<p class="testimonial-author display-inline-block font-family-alt margin-3 no-margin-bottom no-margin-rl text-large text-uppercase title-underline">-->
+        <!--한희정 - 해양위성센터 개발팀장</p>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
 
-                <!-- Item 4 -->
-                <div class="item position-relative width-100">
-                    <div class="testimonial-image height-100 position-absolute">
-                        <img src="assets/images/testimonial/scientist4.jpg" alt="" class="img-responsive"/>
-                    </div>
-                    <div class="testimonial-content height-100">
-                        <div class="display-table height-100">
-                            <div class="display-table-cell vertical-align-middle">
-                                <p class="testimonial-quote display-block font-weight-300 title-extra-large">My mama always said, "Life was like a box of chocolates. You never know what you’re gonna get"</p>
+        <!--&lt;!&ndash; Item 4 &ndash;&gt;-->
+        <!--<div class="item position-relative width-100">-->
+        <!--<div class="testimonial-image height-100 position-absolute">-->
+        <!--<img src="assets/images/testimonial/scientist4.jpg" alt="" class="img-responsive"/>-->
+        <!--</div>-->
+        <!--<div class="testimonial-content height-100">-->
+        <!--<div class="display-table height-100">-->
+        <!--<div class="display-table-cell vertical-align-middle">-->
+        <!--<p class="testimonial-quote display-block font-weight-300 title-extra-large">My mama-->
+        <!--always said, "Life was like a box of chocolates. You never know what you’re gonna-->
+        <!--get"</p>-->
 
-                                <p class="testimonial-author display-inline-block font-family-alt margin-3 no-margin-bottom no-margin-rl text-large text-uppercase title-underline">
-                                    김원국 - 해양위성센터 운영팀장</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!--<p class="testimonial-author display-inline-block font-family-alt margin-3 no-margin-bottom no-margin-rl text-large text-uppercase title-underline">-->
+        <!--김원국 - 해양위성센터 운영팀장</p>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
 
-                <!-- Item 5 -->
-                <div class="item position-relative width-100">
-                    <div class="testimonial-image height-100 position-absolute">
-                        <img src="assets/images/testimonial/scientist5.jpg" alt="" class="img-responsive"/>
-                    </div>
-                    <div class="testimonial-content height-100">
-                        <div class="display-table height-100">
-                            <div class="display-table-cell vertical-align-middle">
-                                <p class="testimonial-quote display-block font-weight-300 title-extra-large">My mama always said, "Life was like a box of chocolates. You never know what you’re gonna get"</p>
+        <!--&lt;!&ndash; Item 5 &ndash;&gt;-->
+        <!--<div class="item position-relative width-100">-->
+        <!--<div class="testimonial-image height-100 position-absolute">-->
+        <!--<img src="assets/images/testimonial/scientist5.jpg" alt="" class="img-responsive"/>-->
+        <!--</div>-->
+        <!--<div class="testimonial-content height-100">-->
+        <!--<div class="display-table height-100">-->
+        <!--<div class="display-table-cell vertical-align-middle">-->
+        <!--<p class="testimonial-quote display-block font-weight-300 title-extra-large">My mama-->
+        <!--always said, "Life was like a box of chocolates. You never know what you’re gonna-->
+        <!--get"</p>-->
 
-                                <p class="testimonial-author display-inline-block font-family-alt margin-3 no-margin-bottom no-margin-rl text-large text-uppercase title-underline">
-                                    배상수 - 해양위성센터 운영팀장</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <!--<p class="testimonial-author display-inline-block font-family-alt margin-3 no-margin-bottom no-margin-rl text-large text-uppercase title-underline">-->
+        <!--배상수 - 해양위성센터 운영팀장</p>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
 
-            <div class="testimonial-slider-nav">
-                <i class="nav-previous icon-Left display-block font-weight-700 text-center title-small position-absolute"></i>
-                <i class="nav-next icon-Right display-block font-weight-700 text-center title-small position-absolute"></i>
-            </div>
-        </div>
-        <!-- 이미지 슬라이더 끝 : 연구원 코멘트 -->
+        <!--<div class="testimonial-slider-nav">-->
+        <!--<i class="nav-previous icon-Left display-block font-weight-700 text-center title-small position-absolute"></i>-->
+        <!--<i class="nav-next icon-Right display-block font-weight-700 text-center title-small position-absolute"></i>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--&lt;!&ndash; 이미지 슬라이더 끝 : 연구원 코멘트 &ndash;&gt;-->
 
 
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
+                    <p><a class="bgm" style="color: #026cff; font-size: 38px;"><i
+                            onclick="javascript:fn_audio('4',this)"
+                            class="fa fa-play-circle-o"></i></a></p>
                     <p class="font-weight-300 title-extra-large-3">
-                        <br/>이렇게 많은 과학자들의 <span class="text-highlight">노력</span> 끝에 태어날 수 있었어. 그럼 나에 대해 더 알아볼까?
+                        이렇게 오랜 기간의 <span class="text-highlight">노력</span> 끝에 태어날 수 있었어. 그럼 나에 대해 더 알아볼까?
                     </p>
                     <br/> <br/>
                 </div>
@@ -511,6 +534,9 @@
                 <div class="col-md-12">
                     <h3 class="section-title display-inline-block font-family-alt margin-4 no-margin-rl no-margin-top text-extra-large text-uppercase title-underline">
                         03. 천리안</h3>
+                    <p><a class="bgm" style="color: #026cff; font-size: 38px;"><i
+                            onclick="javascript:fn_audio('5',this)"
+                            class="fa fa-play-circle-o"></i></a></p>
 
                     <p class="font-weight-300 title-extra-large-3">
                         나는 이런 모습이야.<br/> <span class="text-highlight">파란 동그라미</span>를 누르면 <span class="font-weight-800"
@@ -523,7 +549,7 @@
                     <div class="profile">
                         <!-- 천리안 이미지 -->
                         <div class="profile-image">
-                            <img src="assets/images/chunleean.png" alt="profile image" class="img-responsive"/>
+                            <img src="assets/images/chunleean.jpg" alt="profile image" class="img-responsive"/>
                             <!-- 									<div class="profile-btn-download"> -->
                             <!-- 										<a href="https://www.youtube.com/watch?v=LMxR5Jvbl4U" class="btn btn-medium background-color font-family-alt text-large text-uppercase text-white"> <i class="icon-File-Download font-weight-700"></i> 동영상 보기 -->
                             <!-- 										</a> -->
@@ -533,17 +559,17 @@
                         <div class="profile-description">
                             <!-- Item 1 -->
                             <div class="item display-table text-right"
-                                 style="margin-left: -95%; padding-right: 30px; top: 10%">
+                                 style="margin-left: -40%; padding-right: 30px; top: 20%">
                                 <div class="display-table-cell vertical-align-middle">
-                                    <h4 class="font-family-alt no-letter-spacing title-medium">태양전자판</h4>
+                                    <h4 class="font-family-alt no-letter-spacing title-medium">통신탑재체</h4>
                                     <h5 class="font-weight-400 text-extra-large">
                                         &nbsp;<br>&nbsp;
                                     </h5>
                                 </div>
 
                                 <div class="projects width-100" style="left: 40px;">
-                                    <div class="item painting" data-project-title="태양전자판"
-                                         data-project-about="hello world!"
+                                    <div class="item painting" data-project-title="통신탑재체"
+                                         data-project-about="통신위성 발전을 위해 시험용으로 만들어졌어. 지진이나 홍수 등 자연재해가 일어났을 때 국가공공통신 서비스를 가능하게 하기 위해 나를 가지고 실험하고 있지. 또 사람들이 집에서 좀더 뚜렷한(3D/UHD) TV 방송을 나를 통해 볼 수 있을지도 확인하고 있어."
                                          data-project-img="assets/images/projects/05.jpg">
                                         <span class="circle on-right leftReveal"></span>
                                     </div>
@@ -551,27 +577,44 @@
                             </div>
                             <!-- Item 2 -->
                             <div class="item display-table text-right"
-                                 style="margin-left: -80%; padding-right: 30px; top: 70%">
+                                 style="margin-left: -105%; padding-right: 30px; top: 50%">
                                 <div class="display-table-cell vertical-align-middle">
-                                    <h4 class="font-family-alt no-letter-spacing title-medium">해양탑재체</h4>
+                                    <h4 class="font-family-alt no-letter-spacing title-medium">태양전지판</h4>
                                     <h5 class="font-weight-400 text-extra-large">
                                         &nbsp;<br>&nbsp;
                                     </h5>
                                 </div>
 
                                 <div class="projects width-100" style="left: 40px;">
-                                    <div class="item painting" data-project-title="태양전자판"
-                                         data-project-about="hello world!"
+                                    <div class="item painting" data-project-title="태양전지판"
+                                         data-project-about="전기가 없는 우주에서는 어떻게 인공위성들이 작동을 할 수 있을까? 그건 바로 태양전지판이 전기에너지를 만들어주기 때문이야. 내가 처음 우주로 올라갈 때는 배터리가 충전되어 있지만 금방 다 써버리게 되지. 그럼 배터리를 바꾸러 우주로 가거나 되돌아 올 수 없기 때문에 내가 열심히 태양에너지를 전기에너지로 바꾸어 배터리를 충전해주는거야."
                                          data-project-img="assets/images/projects/06.jpg">
                                         <span class="circle on-right leftReveal"></span>
                                     </div>
                                 </div>
                             </div>
                             <!-- Item 3 -->
-                            <div class="item display-table text-left" style="left: 90%">
+                            <div class="item display-table text-left" style="left: 92%; top: 30%;">
                                 <div class="projects width-100" style="left: -40px;">
-                                    <div class="item painting" data-project-title="태양전자판"
-                                         data-project-about="hello world!"
+                                    <div class="item painting" data-project-title="기상탑재체"
+                                         data-project-about="기상탑재체는 지구상에 있는 구름이나 기상상태 등을 보기위해 만들어졌어. 기상탑재체에는 5개의 다른색을 볼 수 있는 카메라를 가지고 있어서 구름 외에도 다양한 기상정보를 볼 수 있어. 내가 알려주는 정보들로 기상청에서는 일기예보에 사용하고 있지. 사람들이 오늘 우산을 들고나갈지말지는 나의 눈에 달려있다고!"
+                                         data-project-img="assets/images/projects/07.jpg">
+                                        <span class="circle on-left rightReveal"></span>
+                                    </div>
+                                </div>
+
+                                <div class="display-table-cell vertical-align-middle">
+                                    <h4 class="font-family-alt no-letter-spacing title-medium">기상탑재체</h4>
+                                    <h5 class="font-weight-400 text-extra-large">
+                                        &nbsp;<br>&nbsp;
+                                    </h5>
+                                </div>
+                            </div>
+                            <!-- Item 4 -->
+                            <div class="item display-table text-left" style="left: 105%; top: 42%;">
+                                <div class="projects width-100" style="left: -40px;">
+                                    <div class="item painting" data-project-title="본체"
+                                         data-project-about="본체는 나에게 실려있는 탑재체들이 잘 작동될 수 있도록 도와주는 역활을 하고 있어. 바라보고 싶은 곳이 있으면 위성을 돌려주고, 전기가 필요하면 베터리에 저장된 전기를 공급해주고, 지구로부터 정보도 받아서 탑재체에 알려주는 역활도 하고 있지. 앞으로도 탑재체들이 열심히 일할 수 있도록 도와줄꺼야 응원해줘!"
                                          data-project-img="assets/images/projects/07.jpg">
                                         <span class="circle on-left rightReveal"></span>
                                     </div>
@@ -579,6 +622,23 @@
 
                                 <div class="display-table-cell vertical-align-middle">
                                     <h4 class="font-family-alt no-letter-spacing title-medium">본체</h4>
+                                    <h5 class="font-weight-400 text-extra-large">
+                                        &nbsp;<br>&nbsp;
+                                    </h5>
+                                </div>
+                            </div>
+                            <!-- Item 5 -->
+                            <div class="item display-table text-left" style="left: 100%; top: 52%;">
+                                <div class="projects width-100" style="left: -40px;">
+                                    <div class="item painting" data-project-title="해양탑재체"
+                                         data-project-about="나는 우리나라 주변 바다를 관찰하기 위해 만들어졌어. 나는 항상 우리나라 위에 떠있어서 하루에 8번씩 우리나라 주변 바다를 볼 수 있어.  나는 8개의 다른색을 볼 수 있는 눈(카메라)를 가지고 있어서 사람들의 눈에는 안보이는 플랑크톤 같은 다양한 해양정보들을 볼 수 있지. 내가 알려주는 정보들에 대해서는 밑에서 소개해줄께"
+                                         data-project-img="assets/images/projects/07.jpg">
+                                        <span class="circle on-left rightReveal"></span>
+                                    </div>
+                                </div>
+
+                                <div class="display-table-cell vertical-align-middle">
+                                    <h4 class="font-family-alt no-letter-spacing title-medium">해양탑재체</h4>
                                     <h5 class="font-weight-400 text-extra-large">
                                         &nbsp;<br>&nbsp;
                                     </h5>
@@ -592,49 +652,49 @@
         <div class="gallery-carousel position-relative width-100">
             <!-- Item 1 -->
             <div class="gallery-cell">
-                <div class="projects width-100">
-                    <div class="item GOCI-detail scaleReveal" data-project-title="태양전자판"
-                         data-project-about="hello world!" data-project-img="assets/images/projects/01.jpg"
-                         style="width: 0%">
-                        <span class="cell-number display-block font-weight-700 text-center title-large text-white"> 01. </span>
-                    </div>
-                </div>
+                <!--<div class="projects width-100">-->
+                <!--<div class="item GOCI-detail scaleReveal" data-project-title="태양전자판"-->
+                <!--data-project-about="hello world!" data-project-img="assets/images/projects/01.jpg"-->
+                <!--style="width: 0%">-->
+                <!--<span class="cell-number display-block font-weight-700 text-center title-large text-white"> 01. </span>-->
+                <!--</div>-->
+                <!--</div>-->
                 <img src="assets/images/studio/sat5.jpg" alt=""/>
                 <!-- 					<div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://www.youtube.com/embed/LMxR5Jvbl4U?ecver=2" width="640" height="360" frameborder="0" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen></iframe></div> -->
             </div>
             <!-- Item 2 -->
             <div class="gallery-cell">
-                <div class="projects width-100">
-                    <div class="item GOCI-detail scaleReveal" data-project-title="태양전자판"
-                         data-project-about="hello world!" data-project-img="assets/images/projects/02.jpg"
-                         style="width: 0%">
-                        <span class="cell-number display-block font-weight-700 text-center title-large text-white"> 02. </span>
-                    </div>
-                </div>
+                <!--<div class="projects width-100">-->
+                <!--<div class="item GOCI-detail scaleReveal" data-project-title="태양전자판"-->
+                <!--data-project-about="hello world!" data-project-img="assets/images/projects/02.jpg"-->
+                <!--style="width: 0%">-->
+                <!--<span class="cell-number display-block font-weight-700 text-center title-large text-white"> 02. </span>-->
+                <!--</div>-->
+                <!--</div>-->
 
                 <img src="assets/images/studio/sat.png" alt=""/>
             </div>
 
             <!-- Item 3 -->
             <div class="gallery-cell">
-                <div class="projects width-100">
-                    <div class="item GOCI-detail" data-project-title="태양전자판" data-project-about="hello world!"
-                         data-project-img="assets/images/projects/03.jpg" style="width: 0%">
-                        <span class="cell-number display-block font-weight-700 text-center title-large text-white"> 03. </span>
-                    </div>
-                </div>
+                <!--<div class="projects width-100">-->
+                <!--<div class="item GOCI-detail" data-project-title="태양전자판" data-project-about="hello world!"-->
+                <!--data-project-img="assets/images/projects/03.jpg" style="width: 0%">-->
+                <!--<span class="cell-number display-block font-weight-700 text-center title-large text-white"> 03. </span>-->
+                <!--</div>-->
+                <!--</div>-->
 
                 <img src="assets/images/studio/sat2.png" alt=""/>
             </div>
 
             <!-- Item 4 -->
             <div class="gallery-cell">
-                <div class="projects width-100">
-                    <div class="item GOCI-detail" data-project-title="태양전자판" data-project-about="hello world!"
-                         data-project-img="assets/images/projects/04.jpg" style="width: 0%">
-                        <span class="cell-number display-block font-weight-700 text-center title-large text-white"> 04. </span>
-                    </div>
-                </div>
+                <!--<div class="projects width-100">-->
+                <!--<div class="item GOCI-detail" data-project-title="태양전자판" data-project-about="hello world!"-->
+                <!--data-project-img="assets/images/projects/04.jpg" style="width: 0%">-->
+                <!--<span class="cell-number display-block font-weight-700 text-center title-large text-white"> 04. </span>-->
+                <!--</div>-->
+                <!--</div>-->
                 <img src="assets/images/studio/sat4.jpg" alt=""/>
             </div>
 
@@ -655,6 +715,9 @@
                 <div class="col-md-12">
                     <h3 class="section-title display-inline-block font-family-alt margin-4 no-margin-rl no-margin-top text-extra-large text-uppercase title-underline">
                         04. 팔방미인</h3>
+                    <p><a class="bgm" style="color: #026cff; font-size: 38px;"><i
+                            onclick="javascript:fn_audio('6',this)"
+                            class="fa fa-play-circle-o"></i></a></p>
 
                     <p class="font-weight-300 title-extra-large-3">
                         바다의 색이 어떻게 변하는지 알면 <span class="font-weight-800" style="font-weight: bold;">다양한 바다의 정보</span>를 알
@@ -692,173 +755,114 @@
                     <div class="col-md-9">
                         <div class="projects background-gray-light width-100">
                             <!-- Item 1 -->
-                            <div class="item ocean-info" data-project-title="01. 엽록소"
-                                 data-project-about="My mama always said, "Life was like a box of chocolates. You never know what you’re gonna get""
-                                 data-project-img="assets/images/projects/chl.gif" data-project-link="">
+                            <div class="item ocean-info" data-project-title="01. 식물성 플랑크톤"
+                                 data-project-about="식물성 플랑크톤은 이산화탄소를 먹고 산소나 영양소를 만들어낸단다.<br/>산소를 만들 때 이산화탄소가 많이 필요하기 때문에 지구온난화의 원인인 이산화탄소를 줄이는 역할도 해.<br/>식물성플랑크톤이 많아야 물고기들이 많이 살 수 있는 건강한 바다란다.<br/> 나는 넓은 바다에서 식물성 플랑크톤이 얼마나 많은지 알려주는 좋은 친구야."
+                                 data-project-img="assets/images/projects/chl.gif"
+                                 data-project-link="javascript:return;">
 
                                 <span class="hover-bg"></span>
 
                                 <div class="row width-100">
-                                    <div class="item-col col-xs-9 col-sm-8">
+                                    <div class="item-col col-xs-12 col-sm-12">
                                         <span class="display-block font-family-alt text-small text-uppercase"> 이름 </span>
-                                        <span class="display-inline-block font-weight-700 has-sideline text-small text-uppercase position-relative"> 01. 엽록소 </span>
-                                    </div>
-                                    <div class="item-col col-xs-3 col-sm-4">
-                                        <span class="display-block font-family-alt text-small text-uppercase"> 구분 </span>
-                                        <span class="display-inline-block font-weight-700 has-sideline text-small text-uppercase position-relative"> 해양정보 </span>
+                                        <span class="display-inline-block font-weight-700 has-sideline text-small text-uppercase position-relative"> 01. 식물성 플랑크톤 </span>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Item 2 -->
                             <div class="item digital-art ocean-info" data-project-title="02. 용존 유기물"
-                                 data-project-about="My mama always said, "Life was like a box of chocolates. You never know what you’re gonna get""
-                                 data-project-img="assets/images/projects/cdom.gif" data-project-link="">
+                                 data-project-about="용존유기물은 어려운 단어다 그렇지? 물고기나 식물성플랑크톤이 같이 살아있는 생명체가 죽어서 만들어지는게 유기물이라고 해. <br/> 얘들이 물속에 녹아 있는 것을 용존유기물이라고 불러. 얘들이 조금만 있으면 불고기 친구들이 자리는데 도움이 되지만 많아지면 숨을 쉬기 힘들어져. <br/>나는 용존유기물이 얼마만큼 있는지를 알려줘서 바닷 속 물고기 친구들이 잘 살수 있는지 알려준단다."
+                                 data-project-img="assets/images/projects/cdom.gif"
+                                 data-project-link="javascript:return;">
 
                                 <span class="hover-bg"></span>
 
                                 <div class="row width-100">
-                                    <div class="item-col col-xs-9 col-sm-8">
+                                    <div class="item-col col-xs-12 col-sm-12">
                                         <span class="display-block font-family-alt text-small text-uppercase"> 이름 </span>
                                         <span class="display-inline-block font-weight-700 has-sideline text-small text-uppercase position-relative"> 02. 용존 유기물 </span>
-                                    </div>
-                                    <div class="item-col col-xs-3 col-sm-4">
-                                        <span class="display-block font-family-alt text-small text-uppercase"> 구분 </span>
-                                        <span class="display-inline-block font-weight-700 has-sideline text-small text-uppercase position-relative"> 해양정보 </span>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Item 3 -->
-                            <div class="item disaster" data-project-title="03. 녹조"
-                                 data-project-about="My mama always said, "Life was like a box of chocolates. You never know what you’re gonna get""
-                                 data-project-img="assets/images/projects/test.gif" data-project-link="">
+                            <div class="item disaster" data-project-title="03. 녹조 & 적조"
+                                 data-project-about="'과유불급'이란 말 다들 알지? 식물성 플랑크톤이 과다하게 번식하면 오히려 바다에 좋지 않단다. <br/> 해수 표면이 플랑크톤으로 뒤덮이게 되면 공기 중의 산소가 바다 속으로 들어가기가 어려워져서 물고기들이 숨을 쉴 수가 없게 된단다. <br/>물고기 친구들을 살리기 위해서는 녹조나 적조가 어디서 발생했는지 알아야겠지? <br/> 나에게 물어보면 언제든지 알려줄게!"
+                                 data-project-img="assets/images/projects/redtide.gif"
+                                 data-project-link="javascript:return;">
 
                                 <span class="hover-bg"></span>
 
                                 <div class="row width-100">
-                                    <div class="item-col col-xs-9 col-sm-8">
+                                    <div class="item-col col-xs-12 col-sm-12">
                                         <span class="display-block font-family-alt text-small text-uppercase"> 이름 </span>
-                                        <span class="display-inline-block font-weight-700 has-sideline text-small text-uppercase position-relative"> 03. 녹조 </span>
-                                    </div>
-                                    <div class="item-col col-xs-3 col-sm-4">
-                                        <span class="display-block font-family-alt text-small text-uppercase"> 구분 </span>
-                                        <span class="display-inline-block font-weight-700 has-sideline text-small text-uppercase position-relative"> 자연재해 </span>
+                                        <span class="display-inline-block font-weight-700 has-sideline text-small text-uppercase position-relative"> 03. 녹조 & 적조</span>
                                     </div>
                                 </div>
 
                             </div>
 
                             <!-- Item 4 -->
-                            <div class="item digital-art disaster" data-project-title="04. 적조"
-                                 data-project-about="My mama always said, "Life was like a box of chocolates. You never know what you’re gonna get""
-                                 data-project-img="assets/images/projects/test.gif" data-project-link="">
+                            <div class="item digital-art disaster" data-project-title="04. 갈조 (괭생이 모자반)"
+                                 data-project-about="갈조는 바다위의 악동이야. 바람과 해류를 따라 이동하면서 중국, 한국, 일본까지 안가는 곳이 없지.<br/> 바다 위를 둥둥 떠다니면서 어부들이 쳐둔 그물을 망가뜨리기도하고 어린이 친구들이 해수욕장에 놀러가지 못하게 그곳을 점령하기도 해. <br/>난 악동들이 장난치지 못하게 항상 바다를 감시한단다."
+                                 data-project-img="assets/images/projects/test.gif"
+                                 data-project-link="javascript:return;">
 
                                 <span class="hover-bg"></span>
 
                                 <div class="row width-100">
-                                    <div class="item-col col-xs-9 col-sm-8">
+                                    <div class="item-col col-xs-12 col-sm-12">
                                         <span class="display-block font-family-alt text-small text-uppercase"> 이름 </span>
-                                        <span class="display-inline-block font-weight-700 has-sideline text-small text-uppercase position-relative"> 04. 적조 </span>
-                                    </div>
-                                    <div class="item-col col-xs-3 col-sm-4">
-                                        <span class="display-block font-family-alt text-small text-uppercase"> 구분 </span>
-                                        <span class="display-inline-block font-weight-700 has-sideline text-small text-uppercase position-relative"> 자연재해 </span>
+                                        <span class="display-inline-block font-weight-700 has-sideline text-small text-uppercase position-relative"> 04. 갈조 (괭생이 모자반) </span>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Item 5 -->
                             <div class="item disaster" data-project-title="05. 바다 안개"
-                                 data-project-about="My mama always said, "Life was like a box of chocolates. You never know what you’re gonna get""
-                                 data-project-img="assets/images/projects/sea_fog.gif" data-project-link="">
+                                 data-project-about="안개는 땅 가까이에 떠 있는 구름이야. <br/> 그 중에 바다 위에 낀 안개를 바다안개라고 하는데, 안개가 끼면 앞이 잘 보이지 않기 때문에 배들이 다른 배나 바위에 부딪힐 위험이 높아져. <br/> 바다에 나가기 전에 내가 먼 바다에 낀 바다안개를 확인한다면 선장님들께서 위험한 바다안개를 피하는 데 큰 도움이 될거야."
+                                 data-project-img="assets/images/projects/sea_fog.gif"
+                                 data-project-link="javascript:return;">
 
                                 <span class="hover-bg"></span>
 
                                 <div class="row width-100">
-                                    <div class="item-col col-xs-9 col-sm-8">
+                                    <div class="item-col col-xs-12 col-sm-12">
                                         <span class="display-block font-family-alt text-small text-uppercase"> 이름 </span>
                                         <span class="display-inline-block font-weight-700 has-sideline text-small text-uppercase position-relative"> 05. 바다 안개 </span>
-                                    </div>
-                                    <div class="item-col col-xs-3 col-sm-4">
-                                        <span class="display-block font-family-alt text-small text-uppercase"> 구분 </span>
-                                        <span class="display-inline-block font-weight-700 has-sideline text-small text-uppercase position-relative"> 자연재해 </span>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Item 6 -->
                             <div class="item digital-art ocean-info" data-project-title="06. 부유퇴적물"
-                                 data-project-about="My mama always said, "Life was like a box of chocolates. You never know what you’re gonna get""
-                                 data-project-img="assets/images/projects/tss.gif" data-project-link="">
+                                 data-project-about="부유퇴적물은 물속에 있는 식물성 플랑크톤이나 작은 모래알이야. 우리나라 서해바다처럼 바다 색이 갈색인 이유는 모래알들이 많아서겠지? 이러한 알갱이들이 많아질수록 우리가 바다 속에서 물안경을 끼고 봤을 때 멀리까지 볼 수 없게 되지. <br/> 나는 우리 바다가 얼만큼 투명한지 알려줄수있어. <br/>자 이번 주말에는 우리 투명한 바다로 놀러가볼까?"
+                                 data-project-img="assets/images/projects/tss.gif"
+                                 data-project-link="javascript:return;">
 
                                 <span class="hover-bg"></span>
 
                                 <div class="row width-100">
-                                    <div class="item-col col-xs-9 col-sm-8">
+                                    <div class="item-col col-xs-12 col-sm-12">
                                         <span class="display-block font-family-alt text-small text-uppercase"> 이름 </span>
                                         <span class="display-inline-block font-weight-700 has-sideline text-small text-uppercase position-relative"> 06. 부유퇴적물 </span>
-                                    </div>
-                                    <div class="item-col col-xs-3 col-sm-4">
-                                        <span class="display-block font-family-alt text-small text-uppercase"> 구분 </span>
-                                        <span class="display-inline-block font-weight-700 has-sideline text-small text-uppercase position-relative"> 해양정보 </span>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Item 7 -->
-                            <div class="item digital-art disaster" data-project-title="07. 태풍"
-                                 data-project-about="My mama always said, "Life was like a box of chocolates. You never know what you’re gonna get""
-                                 data-project-img="assets/images/projects/typoonn.gif" data-project-link="">
+                            <div class="item digital-art disaster" data-project-title="07. 흡입성먼지 (미세먼지)"
+                                 data-project-about="흡입성먼지는 하늘을 떠다니는 작은 먼지야. <br/> 크기에 따라 부유먼지, 미세먼지, 초미세먼지로 나뉘기도 해. 다들 아는 황사나 스모그도 먼지 가족이야. <br/> 먼지가 많은 날은 온 세상이 뿌옇게 보이고 사람들의 건강에도 나쁜 영향을 줘. <br/> 난 먼지들이 나쁜짓을 하는지 항상 지켜보고 있어"
+                                 data-project-img="assets/images/projects/dust.gif"
+                                 data-project-link="javascript:return;">
 
                                 <span class="hover-bg"></span>
 
                                 <div class="row width-100">
-                                    <div class="item-col col-xs-9 col-sm-8">
+                                    <div class="item-col col-xs-12 col-sm-12">
                                         <span class="display-block font-family-alt text-small text-uppercase"> 이름 </span>
-                                        <span class="display-inline-block font-weight-700 has-sideline text-small text-uppercase position-relative"> 07. 태풍 </span>
-                                    </div>
-                                    <div class="item-col col-xs-3 col-sm-4">
-                                        <span class="display-block font-family-alt text-small text-uppercase"> 구분 </span>
-                                        <span class="display-inline-block font-weight-700 has-sideline text-small text-uppercase position-relative"> 자연재해 </span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Item 8 -->
-                            <div class="item digital-art disaster" data-project-title="08. 산불"
-                                 data-project-about="My mama always said, "Life was like a box of chocolates. You never know what you’re gonna get""
-                                 data-project-img="assets/images/projects/forestfire.gif" data-project-link="">
-
-                                <span class="hover-bg"></span>
-
-                                <div class="row width-100">
-                                    <div class="item-col col-xs-9 col-sm-8">
-                                        <span class="display-block font-family-alt text-small text-uppercase"> 이름 </span>
-                                        <span class="display-inline-block font-weight-700 has-sideline text-small text-uppercase position-relative"> 08. 산불 </span>
-                                    </div>
-                                    <div class="item-col col-xs-3 col-sm-4">
-                                        <span class="display-block font-family-alt text-small text-uppercase"> 구분 </span>
-                                        <span class="display-inline-block font-weight-700 has-sideline text-small text-uppercase position-relative"> 자연재해 </span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Item 9 -->
-                            <div class="item digital-art ocean-info" data-project-title="09. 어장 정보"
-                                 data-project-about="My mama always said, "Life was like a box of chocolates. You never know what you’re gonna get""
-                                 data-project-img="assets/images/projects/fishes.gif" data-project-link="">
-
-                                <span class="hover-bg"></span>
-
-                                <div class="row width-100">
-                                    <div class="item-col col-xs-9 col-sm-8">
-                                        <span class="display-block font-family-alt text-small text-uppercase"> 이름 </span>
-                                        <span class="display-inline-block font-weight-700 has-sideline text-small text-uppercase position-relative"> 09. 어장 정보 </span>
-                                    </div>
-                                    <div class="item-col col-xs-3 col-sm-4">
-                                        <span class="display-block font-family-alt text-small text-uppercase"> 구분 </span>
-                                        <span class="display-inline-block font-weight-700 has-sideline text-small text-uppercase position-relative"> 해양정보 </span>
+                                        <span class="display-inline-block font-weight-700 has-sideline text-small text-uppercase position-relative"> 07. 흡입성먼지 (미세먼지) </span>
                                     </div>
                                 </div>
                             </div>
@@ -888,11 +892,15 @@
                 <div class="col-md-12">
                     <h3 class="section-title display-inline-block font-family-alt margin-4 no-margin-rl no-margin-top text-extra-large text-uppercase title-underline">
                         05. 협력 기관</h3>
+
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-12">
+                    <p><a class="bgm" style="color: #026cff; font-size: 38px;"><i
+                            onclick="javascript:fn_audio('7',this)"
+                            class="fa fa-play-circle-o"></i></a></p>
                     <p class="font-weight-300 margin-3-5 no-margin-bottom no-margin-rl title-extra-large-3">
                         이런 중요한 자료를 혼자만 알고있으면 안되겠지? 난 <span class="font-weight-800" style="font-weight: bold;">많은 기관에 소중한 정보</span>를
                         나눠주고 있어.<br/> 자료를 받는 곳이 늘어난 덕에 <span class="text-highlight">자연재해</span>에 대처하기 쉬워졌단다.
@@ -941,8 +949,12 @@
             <div class="row">
                 <div class="col-md-12">
                     <br/> <br/>
+                    <p><a class="bgm" style="color: #026cff; font-size: 38px;"><i
+                            onclick="javascript:fn_audio('8',this)"
+                            class="fa fa-play-circle-o"></i></a></p>
                     <p class="font-weight-300 margin-3-5 no-margin-bottom no-margin-rl title-extra-large-3">
-                        밑은 자료를 공유하는 <span class="font-weight-800" style="font-weight: bold;">대표적인 기관들</span>이야!</br> 이 외에도 여러
+                        밑은 자료를 공유하는 <span class="font-weight-800" style="font-weight: bold;">대표적인 기관들</span>이야!</br> 이
+                        외에도 여러
                         기관과 협력해서 <span class="text-highlight">많은 사람들에게 도움</span>을 주고 있어.
                     </p>
                     <br/> <br/>
@@ -1055,6 +1067,9 @@
                 <div class="col-md-12">
                     <h3 class="section-title display-inline-block font-family-alt margin-4 no-margin-rl no-margin-top text-extra-large text-uppercase title-underline">
                         06. 작별인사</h3>
+                    <p><a class="bgm" style="color: #026cff; font-size: 38px;"><i
+                            onclick="javascript:fn_audio('9',this)"
+                            class="fa fa-play-circle-o"></i></a></p>
 
                     <p class="font-weight-300 title-extra-large-3">
                         어때, 나에 대해 많이 알게 됐어? <br/>난 다시 <span class="text-highlight">지구를 지키러</span> 가봐야 해.<br/>
@@ -1112,7 +1127,33 @@
 </footer>
 <!-- 푸터 끝 -->
 
-
+<audio class="myAudio" id="player1" controls="controls" style="display: none">
+    <source src="assets/audio/01.mp3" type="audio/mpeg"/>
+</audio>
+<audio class="myAudio" id="player2" controls="controls" style="display: none">
+    <source src="assets/audio/02.mp3" type="audio/mpeg"/>
+</audio>
+<audio class="myAudio" id="player3" controls="controls" style="display: none">
+    <source src="assets/audio/03.mp3" type="audio/mpeg"/>
+</audio>
+<audio class="myAudio" id="player4" controls="controls" style="display: none">
+    <source src="assets/audio/04.mp3" type="audio/mpeg"/>
+</audio>
+<audio class="myAudio" id="player5" controls="controls" style="display: none">
+    <source src="assets/audio/05.mp3" type="audio/mpeg"/>
+</audio>
+<audio class="myAudio" id="player6" controls="controls" style="display: none">
+    <source src="assets/audio/06.mp3" type="audio/mpeg"/>
+</audio>
+<audio class="myAudio" id="player7" controls="controls" style="display: none">
+    <source src="assets/audio/07.mp3" type="audio/mpeg"/>
+</audio>
+<audio class="myAudio" id="player8" controls="controls" style="display: none">
+    <source src="assets/audio/08.mp3" type="audio/mpeg"/>
+</audio>
+<audio class="myAudio" id="player9" controls="controls" style="display: none">
+    <source src="assets/audio/09.mp3" type="audio/mpeg"/>
+</audio>
 <!-- jQuery -->
 <script src="assets/plugins/jquery/jquery.min.js"></script>
 
@@ -1140,35 +1181,6 @@
 <script src="assets/js/main.js"></script>
 <script src="assets/js/text-rotator.js"></script>
 <script src="assets/js/project.js"></script>
-<script>
-    $(document).ready(function () {
-        $(".circle").mouseenter(function () {
-            $(this).css({
-                background: '#004cb6',
-                transition: '0.5s'
-            });
-        });
-        $(".circle").mouseleave(function () {
-            $(this).css({
-                background: '#026cff',
-                transition: '0.5s'
-            });
-        });
-        $(".cell-number").mouseenter(function () {
-            $(this).css({
-                'background': '#004cb6',
-                'transition': '0.5s',
-                '-webkit-transform': 'rotate(360deg)'
-            });
-        });
-        $(".cell-number").mouseleave(function () {
-            $(this).css({
-                'background': '#026cff',
-                'transition': '0.5s',
-                '-webkit-transform': 'rotate(0deg)'
-            });
-        });
-    });
-</script>
+<script src="assets/js/sub.js"></script>
 </body>
 </html>

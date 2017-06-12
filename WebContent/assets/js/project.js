@@ -1,19 +1,19 @@
-(function($){
+(function ($) {
     "use strict";
 
-    $(document).on('ready', function(){
-    
+    $(document).on('ready', function () {
+
         /*
          * Project filtering. Requires isotope.
          */
-        
+
         var $project = $('.projects'),
             $projectNav = $('.project-nav');
-        
-        $(window).smartload(function(){
+
+        $(window).smartload(function () {
             isotopeProject('*');
-            
-            $projectNav.find('a').click(function(e){ 
+
+            $projectNav.find('a').click(function (e) {
                 var selector = $(this).data('filter');
 
                 $projectNav.find('li').removeClass('active');
@@ -23,35 +23,33 @@
                 e.preventDefault();
             });
         });
-        
-        function isotopeProject(filter){
-            $project.isotope({ 
-                filter: filter, 
-                animationOptions: { 
-                    duration: 750, 
-                    easing: 'linear', 
+
+        function isotopeProject(filter) {
+            $project.isotope({
+                filter: filter,
+                animationOptions: {
+                    duration: 750,
+                    easing: 'linear',
                     queue: false
                 }
             });
-            
+
             var $filteredItems = $project.isotope('getFilteredItemElements'),
                 $lastItem = $($filteredItems).last();
-        
+
             $project.find('.item').removeClass('filtered-item last-item');
             $($filteredItems).addClass('filtered-item');
             $lastItem.addClass('last-item');
         };
-        
-        
-        
+
         /*
          * Project preview. Requires magnific popup.
          */
-        
+
         // Define data for the popup
         var projectData = [];
-        
-        $project.find('.item').each(function(i){
+
+        $project.find('.item').each(function (i) {
             projectData[i] = {
                 src: $(this).data('project-img'),
                 projectTitle: $(this).data('project-title'),
@@ -59,10 +57,10 @@
                 projectLink_href: $(this).data('project-link')
             };
         });
-        
-        $project.find('.item').each(function(i){
+
+        $project.find('.item').each(function (i) {
             // Initalize popup
-            $(this).magnificPopup({ 
+            $(this).magnificPopup({
                 key: 'project-preview',
                 items: projectData,
                 index: i,
@@ -73,82 +71,82 @@
                 image: {
                     // Define markup.
                     markup: '<div class="project-preview mfp-with-anim">' +
-                                '<div class="mfp-figure">' +
-                                    '<div class="mfp-img"></div>' +
-                                    '<div class="mfp-preloader"></div>' +
-                                '</div>' +
+                    '<div class="mfp-figure">' +
+                    '<div class="mfp-img"></div>' +
+                    '<div class="mfp-preloader"></div>' +
+                    '</div>' +
 
-                                '<div class="mfp-projectDetail">' +
-                                    '<div class="mfp-projectTrigger">' +
-                                        '<div class="mfp-triggerBtn"><i class="icon-To-Top"></i></div>' +
-                                        '<div class="mfp-projectTitleWrap">' +
-                                            '<div class="display-table-cell vertical-align-middle">' +
-                                                '<a class="mfp-projectLink display-inline-block font-weight-700 text-small text-uppercase" target="_blank">' +
-                                                    '<div class="mfp-projectTitle"></div>' +
-                                                '</a>' +
-                                            '</div>' +
-                                        '</div>' +
-                                    '</div>' +
+                    '<div class="mfp-projectDetail">' +
+                    '<div class="mfp-projectTrigger">' +
+                    '<div class="mfp-triggerBtn"><i class="icon-To-Top"></i></div>' +
+                    '<div class="mfp-projectTitleWrap">' +
+                    '<div class="display-table-cell vertical-align-middle">' +
+                    '<a class="mfp-projectLink display-inline-block font-weight-700 text-small text-uppercase" target="_blank">' +
+                    '<div class="mfp-projectTitle"></div>' +
+                    '</a>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
 
-                                    '<div class="mfp-projectAboutWrap">' +
-                                        '<div id="scrollbar-project-preview" class="inner-content">' +
-                                            '<div class="scrollbar">' +
-                                                '<div class="track">' +
-                                                    '<div class="thumb"><div class="end"></div></div>' +
-                                                '</div>' +
-                                            '</div>' +
+                    '<div class="mfp-projectAboutWrap">' +
+                    '<div id="scrollbar-project-preview" class="inner-content">' +
+                    '<div class="scrollbar">' +
+                    '<div class="track">' +
+                    '<div class="thumb"><div class="end"></div></div>' +
+                    '</div>' +
+                    '</div>' +
 
-                                            '<div class="viewport">' +
-                                                '<div class="overview">' +
-                                                    '<div class="mfp-projectAbout font-family-alt text-large"></div>' +
-                                                '</div>' +
-                                            '</div>' +
-                                        '</div>' +
-                                    '</div>' +
+                    '<div class="viewport">' +
+                    '<div class="overview">' +
+                    '<div class="mfp-projectAbout font-family-alt text-large"></div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
 
-                                    '<div class="mfp-triggerClose text-center">' +
-                                        '<span class="font-family-alt letter-spacing-2 text-uppercase text-extra-large text-white">닫기</span>' +
-                                    '</div>' +
-                                '</div>' +
-                            '</div>'
+                    '<div class="mfp-triggerClose text-center">' +
+                    '<span class="font-family-alt letter-spacing-2 text-uppercase text-extra-large text-white">닫기</span>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>'
                 },
                 gallery: {
-                    enabled: true 
+                    enabled: true
                 },
                 callbacks: {
-                    beforeOpen: function() {
+                    beforeOpen: function () {
                         this.st.mainClass = 'mfp-zoom-in';
                         $('body').css('overflow-y', 'hidden');
                     },
-                    open: function() {
+                    open: function () {
                         // Open & close project project detail
-                        $('.mfp-triggerBtn').click(function(){
+                        $('.mfp-triggerBtn').click(function () {
                             $('.mfp-projectDetail').toggleClass('is-open');
                             $(this).toggleClass('trigger-close');
                         });
-                        
-                        $('.mfp-img').click(function(){
-                        	$('.mfp-projectDetail').toggleClass('is-open');
-                        	$(this).toggleClass('trigger-close');
+
+                        $('.mfp-img').click(function () {
+                            $('.mfp-projectDetail').toggleClass('is-open');
+                            $(this).toggleClass('trigger-close');
                         });
 
                         // Project preview scrollbar
                         $('#scrollbar-project-preview').tinyscrollbar();
 
                         // Close project preview
-                        $('.mfp-triggerClose').click(function(){
+                        $('.mfp-triggerClose').click(function () {
                             $.magnificPopup.close();
                         });
                     },
-                    beforeClose: function() {
+                    beforeClose: function () {
                         $('body').css('overflow-y', 'scroll');
                     },
-                    close: function() {
+                    close: function () {
                         $('.mfp-projectDetail').removeClass('is-open');
                         $('.mfp-triggerBtn').removeClass('trigger-close');
                     }
                 }
             });
-        }); 
+        });
     });
 })(jQuery);

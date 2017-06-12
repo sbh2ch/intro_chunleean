@@ -8,13 +8,15 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
+        $(".myAudio").trigger('pause');
+        $("#player1").trigger('play');
+
         $(window).scroll(function () {
             var position = $(window).scrollTop();
             console.log(position);
-            if (position > 100 && position <= 300) {
+            if (position <= 50) {
                 $(".myAudio").trigger('pause');
-                $("#player1").trigger('play');
-            } else if (position > 300 && position <= 500) {
+            } else if (position > 100 && position <= 300) {
                 $(".myAudio").trigger('pause');
                 $("#player2").trigger('play');
             } else if (position > 500 && position <= 700) {
